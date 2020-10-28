@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react'
+import { React, Component, useState } from 'react'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-class HeightInput extends React.Component {
+class HeightInput extends Component {
   constructor(props) {
     super(props)
     this.state = { value: 130 }
@@ -13,8 +14,8 @@ class HeightInput extends React.Component {
     this.setState({ value: targetValue })
   }
 
-  handleSubmit = event => {
-    console.log(event.data)
+  handleSubmit = () => {
+    this.props.changeRoute(this.state.value)
   }
 
   render() {
@@ -32,11 +33,32 @@ class HeightInput extends React.Component {
   }
 }
 
+
+
 function App() {
+
+  const [height, setHeight] = useState(0)
+
   return (
-    <div className="App">
-        <HeightInput />
-    </div>
+    <BrowserRouter>
+      <main>
+        <div className="App">
+          <Switch>
+            <Route path="/" exact>
+              <HeightInput changeRoute={
+                height => {
+                  alert(height)
+                  <Redirect  />
+                }
+              } />
+            </Route>
+            <Route path="/height">
+              <h1>222</h1>
+            </Route>
+          </Switch>
+        </div>
+      </main>
+    </BrowserRouter>
   );
 }
 
