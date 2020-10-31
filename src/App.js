@@ -2,12 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import { React, Component, useState } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { Helmet }from 'react-helmet'
 // import { Redirect } from 'react-router
 
 const ResultInput = props => {
   return (
-    <div className="centerContainer">
+    <div>
       <h1>Congratulations, you're {props.height} cm tall.</h1>
+      <button onClick={props.onclick}>I need to tell my friends my height!</button>
     </div>
   )
 }
@@ -17,8 +19,8 @@ const HeightInput = props => {
   return(
     <div className="inputContainer">
       <label>
-        Height:
-        <input type="number" placeholder="input your height in cm" onChange={props.handleChange} />
+        What is your height in cm?
+        <input type="text" placeholder="Only use numbers" onChange={props.handleChange} />
       </label>
       <button onClick={props.onClick}>Submit</button>
     </div>
@@ -32,7 +34,9 @@ class App extends Component {
     super(props)
     this.state = {
       value: 130,
-      step: 1
+      step: 1,
+      title: "What's yo height",
+      description: "Yo this app is thight brah!"
     }
   }
 
@@ -43,17 +47,25 @@ class App extends Component {
 
   handleSubmit = () => {
     this.setState({
-      step: 2
+      step: 2,
+      title: `Yo, just found out that I'm ${this.state.value} cm tall, how tall are you?`
     })
   }
 
   render() {
     const { step, value } = this.state
     return(
-      <div className="centerObject">
-        {step === 1 ? <HeightInput handleChange={this.handleChange} onClick={this.handleSubmit}/> : null }
-        {step === 2 ? <ResultInput height={value} /> : null}
-
+      <div>
+        <Helmet>
+          <title>{this.state.title}</title>
+          <description>{this.state.description}</description>
+          <meta name="og:title" content={this.state.title} />
+          <meta name="og:description" content={this.state.description} />
+        </Helmet>
+        <div className="centerContainer">
+          {step === 1 ? <HeightInput handleChange={this.handleChange} onClick={this.handleSubmit}/> : null }
+          {step === 2 ? <ResultInput height={value} /> : null}
+        </div>
       </div>
     )
   }
