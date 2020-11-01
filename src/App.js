@@ -52,8 +52,7 @@ class App extends Component {
     })
 
     window.open(
-      `https://twitter.com/intent/tweet?text=I%20Am%20${this.state.value}%20cm!%20Thank%20you%20https://how-tall-am-i.herokuapp.com/%20#independentpug`,
-      'blank_'
+      `https://twitter.com/intent/tweet?text=I%20Am%20${this.state.value}%20cm!%20Thank%20you%20https://how-tall-am-i.herokuapp.com/%20#independentpug`
     )
   }
 
