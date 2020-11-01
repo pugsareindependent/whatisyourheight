@@ -9,7 +9,7 @@ const ResultInput = props => {
   return (
     <div>
       <h1>Congratulations, you're {props.height} cm tall.</h1>
-      <button onClick={props.onclick}>OMG! I need to tweet this #genius!</button>
+      <button onClick={props.onClick}>OMG! I need to tweet this #genius!</button>
     </div>
   )
 }
