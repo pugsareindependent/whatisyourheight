@@ -51,8 +51,13 @@ class App extends Component {
       title: `Yo, just found out that I'm ${this.state.value} cm tall, how tall are you?`
     })
 
+
+  }
+
+  shareOnTwitter = () => {
     window.open(
-      `https://twitter.com/intent/tweet?text=I%20Am%20${this.state.value}%20cm%20tall!%20Thank%20you%20https://how-tall-am-i.herokuapp.com/%20#independentpug`
+      `https://twitter.com/intent/tweet?text=I%20Am%20${this.state.value}%20cm%20tall!%20Thank%20you%20https://how-tall-am-i.herokuapp.com/%20#independentpug`,
+      '_blank'
     )
   }
 
@@ -68,7 +73,7 @@ class App extends Component {
         </Helmet>
         <div className="centerContainer">
           {step === 1 ? <HeightInput handleChange={this.handleChange} onClick={this.handleSubmit}/> : null }
-          {step === 2 ? <ResultInput height={value} /> : null}
+          {step === 2 ? <ResultInput height={value} onClick={this.shareOnTwitter} /> : null}
         </div>
       </div>
     )
