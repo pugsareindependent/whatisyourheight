@@ -19,7 +19,7 @@ const HeightInput = props => {
   return(
     <div className="inputContainer">
       <label>
-        What is your height in cm?
+        Input your height in cm?
         <input type="text" placeholder="Only use numbers" onChange={props.handleChange} />
       </label>
       <button onClick={props.onClick}>Submit</button>
@@ -35,7 +35,7 @@ class App extends Component {
     this.state = {
       value: 130,
       step: 1,
-      title: "What's yo height",
+      title: "How tall are you?",
       description: "Yo this app is thight brah!"
     }
   }
@@ -52,7 +52,7 @@ class App extends Component {
     })
 
     window.open(
-      `https://twitter.com/intent/tweet?text=I%20Am%20${this.state.value}%20cm!%20Thank%20you%20whatisyoheight.herokuapp.com%20#independentpug`,
+      `https://twitter.com/intent/tweet?text=I%20Am%20${this.state.value}%20cm!%20Thank%20you%20https://how-tall-am-i.herokuapp.com/%20#independentpug`,
       'blank_'
     )
   }
