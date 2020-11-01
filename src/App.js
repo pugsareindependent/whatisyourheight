@@ -9,7 +9,7 @@ const ResultInput = props => {
   return (
     <div>
       <h1>Congratulations, you're {props.height} cm tall.</h1>
-      <button onClick={props.onclick}>I need to tell my friends my height!</button>
+      <button onClick={props.onclick}>OMG! I need to tweet this #genius!</button>
     </div>
   )
 }
@@ -50,6 +50,11 @@ class App extends Component {
       step: 2,
       title: `Yo, just found out that I'm ${this.state.value} cm tall, how tall are you?`
     })
+
+    window.open(
+      `https://twitter.com/intent/tweet?text=I%20Am%20${this.state.value}%20cm!%20Thank%20you%20whatisyoheight.herokuapp.com%20#independentpug`,
+      'blank_'
+    )
   }
 
   render() {
